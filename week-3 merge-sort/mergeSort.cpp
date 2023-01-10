@@ -3,7 +3,7 @@ using namespace std;
 
 vector<int> merge_sort(vector<int>a)
 {
-//  base case
+//  base case ( if array size is 0 or 1. There aren't anything to sort )
     if(a.size() <=1)
     {
         return a;

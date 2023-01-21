@@ -9,6 +9,8 @@ public:
 //
 };
 
+new
+New NEW
 class LinkedList{
 public:
     node * head;

@@ -2,14 +2,16 @@
 
 using namespace std;
 
-class node{
+class node
+{
 public:
     int data;
     node * next;
 //
 };
 
-class LinkedList{
+class LinkedList
+{
 public:
     node * head;
     int sz = 0;
@@ -27,7 +29,7 @@ public:
         newNode->next = NULL;
     }
 
-    // Insert new value at Head (beginning of the linked-list)
+    // Insert new value at Head (beginning of the linked-list). time complexity o(1)
     void InsertAtHeat(int value)
     {
         sz++;
@@ -50,7 +52,7 @@ public:
         node* a = head;
         while( a != NULL)
         {
-            cout<<a-> data<<" ";
+            cout<<a-> data<<", ";
             a = a->next;
         }
         cout<<"\n";
@@ -174,19 +176,57 @@ public:
         delete b;
     }
 
+    // Insert after a value
+    void InsertAfterValue(int value, int data)
+    {
+        node * a = head;
+        while(a != NULL)
+        {
+            if(a->data == value)
+            {
+                break;
+            }
+            a = a->next;
+        }
 
+        if(a == NULL)
+        {
+            cout<<value<<" Doesn't exist in linked-list.\n";
+            return;
+        }
+        sz++;
+        node *newnode = CreateNewNode(data);
+        newnode->next = a->next;
+        a->next = newnode;
+    }
+
+    // Reverse Print
+    void ReversePrint2(node *a)
+    {
+        if(a == NULL)
+        {
+            return;
+        }
+        ReversePrint2(a->next);
+        cout<<a->data<<" ";
+    }
+    void ReversePrint()
+    {
+        ReversePrint2(head);
+        cout<<"\n";
+    }
 };
 
 int main()
 {
     LinkedList l;
+    l.InsertAtHeat(70);
+    l.InsertAtHeat(60);
+    l.InsertAtHeat(50);
+    l.InsertAtHeat(40);
+    l.InsertAtHeat(30);
+    l.InsertAtHeat(20);
     l.InsertAtHeat(10);
-    l.InsertAtHeat(30);
-    l.InsertAtHeat(20);
-    l.InsertAtHeat(30);
-    l.InsertAtHeat(20);
-    l.InsertAtHeat(30);
-    l.InsertAtHeat(20);
     l.Traverse();
 //    cout<<"10 is found at "<< l.SearchDistinctValue(10)<<"\n";
 //    l.SearchAllValue(30);
@@ -200,6 +240,9 @@ int main()
     l.DeleteAtAnyIndex(3);
     l.Traverse();
     cout<<"Size of linked-list: "<<l.getSize()<<"\n";
+    l.InsertAfterValue(20, 100);
+    l.Traverse();
+    l.ReversePrint();
 
     return 0;
 }

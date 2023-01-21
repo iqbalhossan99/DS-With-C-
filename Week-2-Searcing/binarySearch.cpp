@@ -7,26 +7,26 @@ int main()
 {
    int n , k;
 
-   cin>>n>>k;
+   cin>>n;
 
    vector <int> arr(n);
-
    for(int i=0; i<n; i++)
    {
        cin>>arr[i];
    }
 
+   cin>>k;
+
    int low = 0, high = n-1;
-   bool flag = 0;
+   int occurseCount = 0;
    while(low<=high)
    {
        int mid = (low+high)/2;
        if(arr[mid] == k)
        {
-           cout<<arr[mid]<<" YES\n";
-           flag = 1;
-           break;
+           occurseCount++;
        }
+
        if(arr[mid]>k)
        {
            high = mid -1;
@@ -36,18 +36,10 @@ int main()
        }
    }
 
-   if(flag ==0)
+   if(occurseCount >1)
+        cout<<"YES\n";
+    else
         cout<<"NO\n";
     return 0;
 }
 
-/*
-
-n
-sorted array
-
-7 9
-1 3 5 6 8 9 10
-
-
-*/

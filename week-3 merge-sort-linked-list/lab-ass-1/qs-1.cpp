@@ -1,73 +1,44 @@
-// C++ Implementation of the Quick Sort Algorithm.
-#include <iostream>
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int partition(int arr[], int start, int end)
-{
+void quickSort(int arr[], int left, int right) {
+    int i = left, j = right;
+    int tmp;
+    int pivot = arr[(left + right) / 2];
 
-	int pivot = arr[start];
+    while (i <= j) {
+        while (arr[i] > pivot)
+            i++;
+        while (arr[j] < pivot)
+            j--;
+        if (i <= j) {
+            tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+            i++;
+            j--;
+        }
+    }
 
-	int count = 0;
-	for (int i = start + 1; i <= end; i++) {
-		if (arr[i] <= pivot)
-			count++;
-	}
-
-	// Giving pivot element its correct position
-	int pivotIndex = start + count;
-	swap(arr[pivotIndex], arr[start]);
-
-	// Sorting left and right parts of the pivot element
-	int i = start, j = end;
-
-	while (i < pivotIndex && j > pivotIndex) {
-
-		while (arr[i] <= pivot) {
-			i++;
-		}
-
-		while (arr[j] > pivot) {
-			j--;
-		}
-
-		if (i < pivotIndex && j > pivotIndex) {
-			swap(arr[i++], arr[j--]);
-		}
-	}
-
-	return pivotIndex;
+    if (left < j)
+        quickSort(arr, left, j);
+    if (i < right)
+        quickSort(arr, i, right);
 }
 
-void quickSort(int arr[], int start, int end)
-{
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
 
-	// base case
-	if (start >= end)
-		return;
+    quickSort(arr, 0, n - 1);
 
-	// partitioning the array
-	int p = partition(arr, start, end);
-
-	// Sorting the left part
-	quickSort(arr, start, p - 1);
-
-	// Sorting the right part
-	quickSort(arr, p + 1, end);
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
 }
 
-int main()
-{
-
-	int arr[] = { 6, 2, 3, 3, 5 };
-	int n = 5;
-
-	quickSort(arr, 0, n - 1);
-
-	for (int i = 0; i < n; i++) {
-		cout << arr[i] << " ";
-	}
-
-	return 0;
-}

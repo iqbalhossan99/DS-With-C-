@@ -238,7 +238,6 @@ int main()
     st.push(5);
     cout<<st.top()<<"\n";
     st.push(6);
-
     cout<<st.top()<<"\n";
     cout<<"\n";
     st.pop();

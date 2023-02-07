@@ -119,10 +119,11 @@ int main()
 {
     //Reverse a stack using another stack
     Stack<int>a;
+    a.push(3);
     a.push(4);
     a.push(6);
-    a.push(3);
-    a.push(7);
+    a.push(2);
+    a.push(5);
 
     Stack<int>tmp;
 

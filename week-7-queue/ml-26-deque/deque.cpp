@@ -1,22 +1,20 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-template <class T>
 class node
 {
 public:
-    T data;
-    node<T>* prev;
-    node<T>* nxt;
+    int data;
+    node* prev;
+    node* nxt;
 
 };
 
-template <class T>
 class Deque
 {
 public:
-    node<T> * head;
-    node<T> * tail;
+    node * head;
+    node * tail;
     int sz;
 
     Deque()
@@ -26,9 +24,9 @@ public:
         sz = 0;
     }
 
-    node<T> * CreateNode(T value)
+    node* CreateNode(int value)
     {
-        node<T> * newnode = new node<T>;
+        node* newnode = new node;
         newnode -> data = value;
         newnode ->prev = NULL;
         newnode ->nxt = NULL;
@@ -37,9 +35,9 @@ public:
     }
 
     // push_back O(1)
-    void push_back(T value)
+    void push_back(int value)
     {
-        node<T> *newnode = CreateNode(value);
+        node *newnode = CreateNode(value);
         if(sz == 0)
         {
             head = newnode;
@@ -55,9 +53,9 @@ public:
     }
 
     // push_front O(1)
-    void push_front(T value)
+    void push_front(int value)
     {
-        node<T> *newnode = CreateNode(value);
+        node *newnode = CreateNode(value);
         if(sz ==0 )
         {
             head = newnode;
@@ -90,7 +88,7 @@ public:
             return;
         }
 
-        node<T> *a = tail;
+        node *a = tail;
         tail = tail ->prev;
         delete a;
         tail -> nxt = NULL;
@@ -114,7 +112,7 @@ public:
             return;
         }
 
-        node<T> *a = head;
+        node *a = head;
         head = head->nxt;
         delete a;
         head -> prev = NULL;
@@ -148,7 +146,7 @@ public:
 };
 int main()
 {
-    Deque <int> d;
+    Deque d;
     d.push_back(10);
     d.push_back(15);
     d.push_back(20);

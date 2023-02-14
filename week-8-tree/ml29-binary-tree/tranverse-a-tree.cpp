@@ -112,18 +112,40 @@ public:
         }
     }
 
-    // DFS
+    // DFS Traverse -> root to left to right
     void DFS(node* a)
     {
               if(a == NULL)
                     return;
 
-//              cout<<a->id<< " ";
-              DFS(a->Left);
-
-              DFS(a->Right);
               cout<<a->id<< " ";
+              DFS(a->Left);
+              DFS(a->Right);
     }
+
+    // In-order Traverse -> left to root to right
+    void In_order(node* a)
+    {
+              if( a==NULL)
+              {
+                        return;
+              }
+              In_order(a->Left);
+              cout<<a->id<<" ";
+              In_order(a->Right);
+    }
+
+    void Pre_order(node* a)
+    {
+              if( a==NULL)
+              {
+                        return;
+              }
+              cout<<a->id<<" ";
+              Pre_order(a->Left);
+              Pre_order(a->Right);
+    }
+
 
 };
 
@@ -131,7 +153,7 @@ int main()
 {
     Binary_Tree bt;
     bt.build_binary_tree();
-    bt.DFS(bt.root);
+    bt.Pre_order(bt.root);
     return 0;
 }
 

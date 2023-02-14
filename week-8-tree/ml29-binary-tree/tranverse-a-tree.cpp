@@ -36,7 +36,7 @@ public:
 
     void build_binary_tree()
     {
-                node* allnode[6];
+        node* allnode[6];
 
         for(int i=0; i<6; i++)
         {
@@ -81,41 +81,57 @@ public:
 //        }
 //    }
 
-                void BFS(){
-                                queue<node*>q;
-                                q.push(root);
+    void BFS()
+    {
+        queue<node*>q;
+        q.push(root);
 
-                                while(!q.empty())
-                                {
-                                          node* a = q.front();
-                                          q.pop();
-                                          int p = -1, l = -1, r = -1;
-                                          if(a->Left != NULL)
-                                          {
-                                                    l = a->Left->id;
-                                                    q.push(a->Left);
-                                          }
-                                          if(a->Right != NULL)
-                                          {
-                                                    r = a->Right->id;
-                                                    q.push(a->Right);
-                                          }
-                                          if(a->Parent != NULL)
-                                          {
-                                                    p = a->Parent->id;
-                                          }
+        while(!q.empty())
+        {
+            node* a = q.front();
+            q.pop();
+            int p = -1, l = -1, r = -1;
+            if(a->Left != NULL)
+            {
+                l = a->Left->id;
+                q.push(a->Left);
+            }
+            if(a->Right != NULL)
+            {
+                r = a->Right->id;
+                q.push(a->Right);
+            }
+            if(a->Parent != NULL)
+            {
+                p = a->Parent->id;
+                //     doesn't need to push into the queue because we already cross the parent. like 0 is parent of 1 & 2
+            }
 
-                                          cout<<"Node id = "<<a->id<<" Left Child = "<<l;
-                                          cout<<" Right Child = "<<r<<" Parent Id = "<<p<<"\n";
-                                }
-                }
+            cout<<"Node id = "<<a->id<<" Left Child = "<<l;
+            cout<<" Right Child = "<<r<<" Parent Id = "<<p<<"\n";
+        }
+    }
+
+    // DFS
+    void DFS(node* a)
+    {
+              if(a == NULL)
+                    return;
+
+//              cout<<a->id<< " ";
+              DFS(a->Left);
+
+              DFS(a->Right);
+              cout<<a->id<< " ";
+    }
+
 };
 
 int main()
 {
     Binary_Tree bt;
     bt.build_binary_tree();
-    bt.BFS();
+    bt.DFS(bt.root);
     return 0;
 }
 

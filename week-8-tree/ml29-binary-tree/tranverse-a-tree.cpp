@@ -135,6 +135,7 @@ public:
               In_order(a->Right);
     }
 
+    // Pre_order traversing
     void Pre_order(node* a)
     {
               if( a==NULL)
@@ -147,13 +148,27 @@ public:
     }
 
 
+    // Post_order traversing
+    void Post_order(node* a)
+    {
+              if( a==NULL)
+              {
+                        return;
+              }
+
+              Post_order(a->Left);
+              Post_order(a->Right);
+              cout<<a->id<<" ";
+    }
+
+
 };
 
 int main()
 {
     Binary_Tree bt;
     bt.build_binary_tree();
-    bt.Pre_order(bt.root);
+    bt.Post_order(bt.root);
     return 0;
 }
 

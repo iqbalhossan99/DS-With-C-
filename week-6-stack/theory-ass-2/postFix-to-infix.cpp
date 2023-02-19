@@ -25,7 +25,8 @@ int main()
         {
             ans += now;
         }
-        else{
+        else
+        {
             while(st.size() && prec(st.top()) >= prec(now))
             {
                 ans += st.top();
@@ -42,6 +43,8 @@ int main()
     }
 
     cout<<ans<<"\n";
+
+
 
     return 0;
 }

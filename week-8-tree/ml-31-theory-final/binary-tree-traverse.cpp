@@ -153,26 +153,82 @@ public:
         Search(a->Left , value);
         Search(a->Right , value);
     }
+
+
+    // In-order Traverse -> left to root to right
+    void In_order(node* a)
+    {
+        if( a==NULL)
+        {
+            return;
+        }
+        In_order(a->Left);
+        cout<<a->id<<" ";
+        In_order(a->Right);
+    }
+
+    // Pre_order traversing
+    void Pre_order(node* a)
+    {
+        if( a==NULL)
+        {
+            return;
+        }
+        cout<<a->id<<" ";
+        Pre_order(a->Left);
+        Pre_order(a->Right);
+    }
+
+
+    // Post_order traversing
+    void Post_order(node* a)
+    {
+        if( a==NULL)
+        {
+            return;
+        }
+
+        Post_order(a->Left);
+        Post_order(a->Right);
+        cout<<a->id<<" ";
+    }
+
+
 };
 
 
 int main()
 {
     BinaryTree bt;
-    bt.Insertion(0,20);
-    bt.Insertion(1,10);
-    bt.Insertion(2,22);
-    bt.Insertion(3,5);
-    bt.Insertion(4,12);
-    bt.Insertion(5,21);
-    bt.Insertion(6,25);
-    bt.Insertion(7,3);
-    bt.Insertion(6,15);
+//    bt.Insertion(0,20);
+//    bt.Insertion(1,10);
+//    bt.Insertion(2,22);
+//    bt.Insertion(3,5);
+//    bt.Insertion(4,12);
+//    bt.Insertion(5,21);
+//    bt.Insertion(6,25);
+//    bt.Insertion(7,3);
+//    bt.Insertion(6,15);
+bt.Insertion(20,0);
+    bt.Insertion(10,1);
+    bt.Insertion(22,2);
+    bt.Insertion(5,3);
+    bt.Insertion(12,4);
+    bt.Insertion(21,5);
+    bt.Insertion(25,6);
+    bt.Insertion(3,7);
+    bt.Insertion(15,6);
 
     bt.BFS();
     cout<<"\n";
-    bt.Search(bt.root , 5);
+    bt.In_order(bt.root);
     cout<<"\n";
-    bt.Search(bt.root , 10);
+    bt.Pre_order(bt.root);
+    cout<<"\n";
+    bt.Post_order(bt.root);
+//    bt.Search(bt.root , 5);
+//    cout<<"\n";
+//    bt.Search(bt.root , 10);
     return 0;
 }
+

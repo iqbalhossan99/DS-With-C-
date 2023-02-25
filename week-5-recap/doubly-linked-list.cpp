@@ -31,6 +31,7 @@ public:
         if(head == NULL)
         {
             head = newNode;
+            return;
         }
 
         newNode -> next = head;

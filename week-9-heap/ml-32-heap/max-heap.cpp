@@ -13,7 +13,7 @@ public:
     //O(logn)
     void up_heapify(int idx)
     {
-        while(idx > 0 && nodes[idx] > nodes[(idx-1)/2])
+        while(idx > 0 && nodes[idx] < nodes[(idx-1)/2])
         {
             swap(nodes[idx] , nodes[(idx-1)/2]);
             idx = (idx-1)/2;
@@ -106,8 +106,8 @@ int main()
     heap.insert(20);
     heap.insert(30);
     cout<<"Max element = "<<heap.GetMax()<<"\n";
-//    heap.PrintHeap();
-
+    heap.PrintHeap();
+                cout<<"\n";
     cout<<"Max element = "<<heap.ExtractMax()<<"\n";
     cout<<"Max element = "<<heap.ExtractMax()<<"\n";
     return 0;

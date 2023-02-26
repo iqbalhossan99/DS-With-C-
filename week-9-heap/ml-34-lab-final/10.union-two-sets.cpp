@@ -21,7 +21,6 @@ int main()
 	for(int i=0; i<sz1;i++)
                 {
                                 cin>>second[i];
-                                cout<<i;
                 }
 
 	// Print first array

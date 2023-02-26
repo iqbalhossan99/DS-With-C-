@@ -32,9 +32,11 @@ public:
         return newNode;
     }
 
+    // insertHead O(1)
     void insertHead(int data)
     {
         Node *newNode = CreateNewNode(data);
+
         if(head == NULL)
         {
             head = newNode;
@@ -44,13 +46,14 @@ public:
         }
 
         Node* a = head;
-        newNode -> next = a;
+        newNode -> next = a ;
         a->prev = newNode;
         head = newNode;
 
         sz++;
     }
 
+    // insertTail O(1)
     void insertTail(int value)
     {
         Node* newNode = CreateNewNode(value);
@@ -64,8 +67,8 @@ public:
         }
 
         Node* t = tail;
-        newNode ->next = t;
-        t->prev = newNode;
+        newNode->prev = t;
+        t->next = newNode;
         tail = newNode;
         sz++;
     }
@@ -80,29 +83,23 @@ public:
         if(head == NULL)
         {
             head = newNode;
+            tail = newNode;
             head->prev = NULL;
             tail->next = NULL;
-//            return;
+            return;
         }
-        else
-        {
             //current will point to head
             Node *current = head, *temp = NULL;
-
 
             //Store the mid position of the list
             int mid = (sz % 2 == 0) ? (sz/2) : ((sz+1)/2);
 
 
             //Iterate through list till current points to mid position
-            for(int i = 1; i < mid; i++)
+            for(int i = 1; i <mid; i++)
             {
                 current = current->next;
             }
-
-
-
-
             temp = current->next;
             temp->prev = current;
 
@@ -112,15 +109,13 @@ public:
             newNode->next = temp;
             temp->prev = newNode;
             sz++;
+//                cout<<head->data<<" ";
 
-
-        }
     }
 
     void Traverse()
     {
         Node *a = head;
-        Node *t = tail;
 
         if(head == NULL)
         {
@@ -133,12 +128,6 @@ public:
             cout<< a->data<<" ";
             a = a->next;
         }
-
-//        while( t != NULL)
-//        {
-//            cout<< t->data<<" ";
-//            t = t->next;
-//        }
     }
 
     void getSize()
@@ -163,6 +152,7 @@ int main()
     dl.Traverse();
     dl.addInMid(5);
     dl.addInMid(15);
+    cout<<"\n\n";
     dl.Traverse();
     dl.getSize();
 

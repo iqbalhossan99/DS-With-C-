@@ -92,7 +92,7 @@ public:
             }
             if(a->parent != NULL)
                 p = a->parent->id;
-            cout<<"Node id = "<<a->id<<"Value = "<<a->value<<" Left Child = "<<l;
+            cout<<"Node id = "<<a->id<<" Left Child = "<<l;
             cout<<" Right Child = "<<r<<" Parent id = "<<p<<"\n";
 
         }
@@ -154,6 +154,8 @@ public:
         Search(a->Left , value);
         Search(a->Right , value);
     }
+
+
 };
 
 

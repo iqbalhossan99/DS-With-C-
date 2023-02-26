@@ -76,7 +76,6 @@ vector<string> mergeSort(vector<string> Arr, int l, int sz)
 // Driver code
 int main()
 {
-//    vector<string> Arr = { "sun", "earth", "mars", "mercury" };
     int N;
     string s;
     cin>>N;
@@ -87,7 +86,6 @@ int main()
                     cin>>s;
                    Arr.push_back(s);
     }
-//    int N = Arr.size();
     vector<string> a = mergeSort(Arr, 0, N - 1);
     for (int i = 0; i < N; i++)
     {

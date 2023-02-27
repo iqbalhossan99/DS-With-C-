@@ -60,6 +60,7 @@ vector<string> merge(vector<string> Arr1,vector<string> Arr2)
 // Function to mergeSort 2 arrays
 vector<string> mergeSort(vector<string> Arr, int l, int sz)
 {
+   // base  case
     if (l == sz)
     {
         vector<string> A = { Arr[l] };

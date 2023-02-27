@@ -10,13 +10,13 @@ public:
 
 };
 
-class DoublyLinkedList
+class LinkedList
 {
 public:
     Node* head;
     Node* tail;
     int sz;
-    DoublyLinkedList()
+    LinkedList()
     {
         head = NULL;
         tail = NULL;
@@ -74,7 +74,7 @@ public:
     }
 
     //addInMid() will add a node to the middle of the list
-    void addInMid(int data)
+    void insertMid(int data)
     {
         //Create a new node
         Node *newNode = CreateNewNode(data);
@@ -88,32 +88,32 @@ public:
             tail->next = NULL;
             return;
         }
-            //current will point to head
-            Node *current = head, *temp = NULL;
+        //current will point to head
+        Node *current = head, *temp = NULL;
 
-            //Store the mid position of the list
-            int mid = (sz % 2 == 0) ? (sz/2) : ((sz+1)/2);
+        //Store the mid position of the list
+        int mid = (sz % 2 == 0) ? (sz/2) : ((sz+1)/2);
 
 
-            //Iterate through list till current points to mid position
-            for(int i = 1; i <mid; i++)
-            {
-                current = current->next;
-            }
-            temp = current->next;
-            temp->prev = current;
+        //Iterate through list till current points to mid position
+        for(int i = 1; i <mid; i++)
+        {
+            current = current->next;
+        }
+        temp = current->next;
+        temp->prev = current;
 
-            //newNode will be added between current and temp
-            current->next = newNode;
-            newNode->prev = current;
-            newNode->next = temp;
-            temp->prev = newNode;
-            sz++;
+        //newNode will be added between current and temp
+        current->next = newNode;
+        newNode->prev = current;
+        newNode->next = temp;
+        temp->prev = newNode;
+        sz++;
 //                cout<<head->data<<" ";
 
     }
 
-    void Traverse()
+    void print()
     {
         Node *a = head;
 
@@ -130,31 +130,51 @@ public:
         }
     }
 
-    void getSize()
+    int getSize()
     {
-        cout<<"\n"<<"size: "<<sz;
+       return sz;
     }
+
+    void Merge(LinkedList b)
+    {
+        //Merge a at the back of this linked-list
+        //Write your code
+
+              tail->next = b.head;
+
+              sz = sz + b.getSize();
+
+    }
+
 
 };
 
 int main()
 {
-    DoublyLinkedList dl;
-
-    dl.insertHead(20);
-    dl.insertHead(10);
-    dl.insertHead(30);
-    dl.insertHead(40);
-    dl.insertTail(22);
-    dl.insertTail(33);
-    dl.insertTail(44);
-    dl.insertTail(55);
-    dl.Traverse();
-    dl.addInMid(5);
-    dl.addInMid(15);
+    LinkedList a;
+    LinkedList b;
+    a.insertHead(1);
+    a.insertTail(5);
+    a.insertMid(3);
+    a.insertHead(0);
+    a.insertTail(10);
+    a.print(); // prints  0 1 3 5 10
     cout<<"\n\n";
-    dl.Traverse();
-    dl.getSize();
+    a.getSize();
+    cout<<"\n\n";
+    b.insertHead(10);
+    b.insertTail(50);
+    b.insertMid(30);
+    b.insertHead(9);
+    b.insertTail(100);
+    b.print(); // prints  9 10 30 50 100
+      cout<<"\n\n";
+    a.Merge(b);
+    cout<<"\n\n";
+    a.print(); // prints  0 1 3 5 10 9 10 30 50 100
+        cout<<"\n\n";
+    b.print(); // prints  9 10 30 50 100
 
-    return 0;
+
+return 0;
 }
